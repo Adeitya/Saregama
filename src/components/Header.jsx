@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
   API_OPTIONS,
+  DEBOUNCING_DELAY,
   HOME_BLACK,
   HOME_WHITE,
   LOGO_URL,
@@ -9,10 +10,12 @@ import {
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { addSuggestionCache } from "../store/slices/searchSlice";
+import { addSuggestionCache, addSearchTxt } from "../store/slices/searchSlice";
+import { useNavigate } from "react-router";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [searchTxt, setSearchTxt] = useState("");
   const [showSuggestion, setShowSuggestion] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
@@ -24,7 +27,7 @@ const Header = () => {
       if (suggestionCache[searchTxt]) {
         setSearchResult(suggestionCache[searchTxt]);
       } else if (searchTxt) getSearchQuery();
-    }, 300);
+    }, DEBOUNCING_DELAY);
 
     return () => {
       clearTimeout(i);
@@ -52,11 +55,16 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between bg-black w-full py-3 px-4">
+    <div className="flex fixed justify-between bg-black w-full py-3 px-4 z-50">
       <img src={LOGO_URL} alt="logo" className="h-10" />
       <div className="flex w-1/3 gap-2">
-        <div className="rounded-full bg-gray-200 p-1 hover:bg-gray-100 cursor-pointer">
-          <img src={HOME_WHITE} alt="logo" className="h-8 p-1" />
+        <div className="rounded-full bg-gray-200 p-1 hover:bg-green-500 cursor-pointer">
+          <img
+            src={HOME_WHITE}
+            alt="logo"
+            className="h-8 p-1"
+            onClick={() => navigate("/browse")}
+          />
         </div>
         <div className="flex grow bg-white rounded-full p-1 relative">
           <div className="flex flex-col w-full h-full">
@@ -74,8 +82,9 @@ const Header = () => {
                 {searchResult?.map((item, index) => (
                   <span
                     key={index}
-                    className="block p-2 text-black hover:bg-gray-100 cursor-pointer"
+                    className="block p-2 text-black hover:bg-green-500 cursor-pointer"
                     onClick={() => {
+                      dispatch(addSearchTxt(item.term));
                       setSearchTxt(item.term);
                     }}
                   >
@@ -86,16 +95,22 @@ const Header = () => {
             )}
           </div>
           <img
-            src={"https://cdn-icons-png.flaticon.com/128/18895/18895639.png"}
+            src={"https://cdn-icons-png.flaticon.com/128/149/149852.png"}
             alt="logo"
-            className="h-8 border-l-2 pl-2 p-1 cursor-pointer"
+            className="h-8 pl-2 p-1 cursor-pointer hover:bg-green-500 hover:rounded-full"
+            onClick={() => {
+              if (searchTxt) {
+                dispatch(addSearchTxt(searchTxt));
+                setSearchTxt(searchTxt);
+              }
+            }}
           />
         </div>
       </div>
       <img
         src={PROFILE_URL}
         alt="logo"
-        className="h-10 cursor-pointer"
+        className="h-10 cursor-pointer hover:bg-white hover:rounded-full"
         onClick={() => signOut(auth)}
       />
     </div>

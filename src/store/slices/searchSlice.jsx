@@ -4,6 +4,8 @@ const searchSlice = createSlice({
   name: "searchSlice",
   initialState: {
     suggestionCache: {},
+    searchTxt: "",
+    searchData: [],
   },
   reducers: {
     addSuggestionCache: (state, action) => {
@@ -12,8 +14,15 @@ const searchSlice = createSlice({
         action.payload
       );
     },
+    addSearchTxt: (state, action) => {
+      state.searchTxt = action.payload;
+    },
+    addSearchData: (state, action) => {
+      state.searchData = action.payload;
+    },
   },
 });
 
-export const { addSuggestionCache } = searchSlice.actions;
+export const { addSuggestionCache, addSearchTxt, addSearchData } =
+  searchSlice.actions;
 export default searchSlice.reducer;
