@@ -1,12 +1,37 @@
-# React + Vite
+# Saregama - AI Music Recommendation Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+Saregama is a modern web application designed to provide users with an immersive music experience. Built using **React.js**, **Tailwind CSS**, **Firebase**, and **Redux Toolkit**, it allows users to search for their favorite songs, play them, log in/sign up, and get personalized song recommendations powered by AI based on their mood, genre, or artist preferences. The application uses **YouTube API**, **Spotify API**, and **Google API** to fetch data and offers a smooth, user-friendly interface to discover music. It also features secure authentication with **Firebase**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Live Demo**: [Saregama - Live](https://saregama-omega.vercel.app/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+- **Search for songs**: Search for your favorite songs or videos.
+- **Play songs**: Listen to your favorite tracks directly on the platform.
+- **Login & Sign up**: User authentication using **Firebase**.
+- **AI-powered recommendations**: Get personalized music recommendations based on your mood, genre, and artist preferences.
+- **State management**: Use of **Redux Toolkit** for efficient state management.
+
+---
+
+## Tech Stack
+
+- **Frontend**: 
+  - **React.js** - A JavaScript library for building user interfaces.
+  - **Tailwind CSS** - A utility-first CSS framework for rapid UI development.
+  - **React Router** - For routing and navigation.
+  - **Vite** - A fast build tool and development server.
+- **Backend**: 
+  - **Firebase** - Used for authentication and real-time database (for storing user data and preferences).
+- **APIs**: 
+  - **YouTube API** - To fetch video data.
+  - **Spotify API** - For music data and song recommendations.
+  - **Google API** - For additional data and services.
+- **State Management**: 
+  - **Redux Toolkit** - A modern approach to managing state in React applications.
+
+---
