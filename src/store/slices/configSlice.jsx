@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const configSlice = createSlice({
   name: "configSlice",
   initialState: {
-    homePageFlag: true,
+    homePageFlag: false,
     showLoaderFlag: false,
   },
   reducers: {

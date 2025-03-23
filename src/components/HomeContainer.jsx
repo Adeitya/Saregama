@@ -12,6 +12,10 @@ const HomeContainer = () => {
 
   useEffect(() => {
     getVideos();
+    dispatch(setHomePageFlag(true));
+    return () => {
+      dispatch(setHomePageFlag(false));
+    };
   }, []);
 
   const getVideos = async () => {
@@ -26,10 +30,10 @@ const HomeContainer = () => {
     // <div className="flex flex-row justify-center flex-wrap overflow-y-auto h-screen pt-20">
     <div className="bg-gradient-to-t pt-20 from-black h-screen overflow-y-scroll">
       <div className="bg-white mx-40 my-2 rounded-lg p-4 flex flex-row justify-center flex-wrap">
-        {videos.length === 0 ? (
+        {videos?.length === 0 ? (
           <ShimmerCard />
         ) : (
-          videos.map((video) => (
+          videos?.map((video) => (
             <Link
               key={video.id.videoId}
               to={"/browse/watch?v=" + video.id.videoId}

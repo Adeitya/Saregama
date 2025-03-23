@@ -71,7 +71,7 @@ const Header = () => {
             className="h-8 p-1"
             onClick={() => {
               navigate("/browse");
-              dispatch(setHomePageFlag(true));
+              // dispatch(setHomePageFlag(true));
             }}
           />
         </div>
@@ -96,8 +96,8 @@ const Header = () => {
                       onClick={() => {
                         dispatch(addSearchTxt(item.term));
                         setSearchTxt(item.term);
-                        dispatch(setHomePageFlag(false));
-                        navigate("/browse");
+                        // dispatch(setHomePageFlag(false));
+                        navigate("/browse/results?search_query=" + item.term);
                       }}
                     >
                       {item.term}
@@ -117,8 +117,8 @@ const Header = () => {
               if (searchTxt) {
                 dispatch(addSearchTxt(searchTxt));
                 setSearchTxt(searchTxt);
-                dispatch(setHomePageFlag(false));
-                navigate("/browse");
+                // dispatch(setHomePageFlag(false));
+                navigate("/browse/results?search_query=" + searchTxt);
               }
             }}
           />

@@ -8,6 +8,7 @@ import { resetUserDetails, addUserDetails } from "../store/slices/userSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { addSearchData } from "../store/slices/searchSlice";
 import MainContainer from "./MainContainer";
+import { setHomePageFlag } from "../store/slices/configSlice";
 
 const Browse = () => {
   const navigate = useNavigate();

@@ -4,6 +4,7 @@ import Browse from "./Browse";
 import Login from "./Login";
 import WatchPage from "./WatchPage";
 import MainContainer from "./MainContainer";
+import HomeContainer from "./HomeContainer";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -17,6 +18,10 @@ const Body = () => {
       children: [
         {
           path: "/browse",
+          element: <HomeContainer />,
+        },
+        {
+          path: "results",
           element: <MainContainer />,
         },
         {

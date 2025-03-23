@@ -6,11 +6,9 @@ import HomeContainer from "./HomeContainer";
 
 const MainContainer = () => {
   const searchData = useSelector((store) => store.search.searchData);
-  const homePageFlag = useSelector((store) => store.config.homePageFlag);
+  //const homePageFlag = useSelector((store) => store.config.homePageFlag);
 
-  return homePageFlag ? (
-    <HomeContainer />
-  ) : (
+  return (
     <div className="bg-gradient-to-t pt-20 from-black h-screen overflow-y-scroll">
       <div className="bg-white mx-40 my-2 rounded-lg p-4">
         <div>
@@ -44,7 +42,7 @@ const MainContainer = () => {
       <div className="bg-white mx-40 my-2 rounded-lg p-4">
         <p className="font-bold text-xl mb-2">Songs</p>
         <div className="">
-          {searchData.map((item) => (
+          {searchData?.map((item) => (
             <Link
               key={item.id.videoId}
               to={"/browse/watch?v=" + item.id.videoId}
