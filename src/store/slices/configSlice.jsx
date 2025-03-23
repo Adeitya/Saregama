@@ -11,7 +11,6 @@ const configSlice = createSlice({
       state.homePageFlag = action.payload;
     },
     setShowLoaderFlag: (state, action) => {
-      console.log("loader", action.payload);
       state.showLoaderFlag = action.payload;
     },
   },

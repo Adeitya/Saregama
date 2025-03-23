@@ -46,7 +46,6 @@ const Browse = () => {
   const getSearchData = async () => {
     const data = await fetch(YOUTUBE_SEARCH_API + searchTxt + "music song");
     const json = await data.json();
-    console.log("data", json);
     setSearchData(json?.items);
     dispatch(addSearchData(json?.items));
   };

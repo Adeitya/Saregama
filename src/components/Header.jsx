@@ -45,7 +45,6 @@ const Header = () => {
         API_OPTIONS
       );
       const result = await response?.json();
-      console.log("api call-", searchTxt);
       setSearchResult(result?.hints);
       dispatch(
         addSuggestionCache({

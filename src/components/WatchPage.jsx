@@ -16,7 +16,6 @@ const WatchPage = () => {
     const data = await fetch(YOUTUBE_VIDEO_ID + searchParams.get("v"));
     const json = await data.json();
     setVideoDetails(json.items[0]);
-    console.log(json);
   };
   return (
     <div className="bg-gradient-to-t pt-20 from-black h-screen overflow-y-scroll">

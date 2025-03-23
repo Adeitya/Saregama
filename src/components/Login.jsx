@@ -42,7 +42,6 @@ const Login = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("login ", user);
         dispatch(setShowLoaderFlag(false));
         navigate("/browse");
       }
@@ -53,8 +52,6 @@ const Login = () => {
   const handleContinueGoogle = async () => {
     const loggedInUser = await signInWithGoogle();
     if (loggedInUser) {
-      console.log("Successfully signInWithGoogle", loggedInUser);
-      //navigate("/browse");
       dispatch(
         addUserDetails({
           uId: loggedInUser.uid,
@@ -80,7 +77,6 @@ const Login = () => {
             email.current.value,
             password.current.value
           );
-          console.log("successfully login -", userCredential.user);
           dispatch(
             addUserDetails({
               uId: userCredential.user.uid,
@@ -102,7 +98,6 @@ const Login = () => {
             email.current.value,
             password.current.value
           );
-          console.log("successfully SignUp -", userCredential.user);
           dispatch(
             addUserDetails({
               uId: userCredential.user.uid,
