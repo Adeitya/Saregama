@@ -4,8 +4,6 @@
 
 Saregama is a modern web application designed to provide users with an immersive music experience. Built using **React.js**, **Tailwind CSS**, **Firebase**, and **Redux Toolkit**, it allows users to search for their favorite songs, play them, log in/sign up, and get personalized song recommendations powered by AI based on their mood, genre, or artist preferences. The application uses **YouTube API**, **Spotify API**, and **Google API** to fetch data and offers a smooth, user-friendly interface to discover music. It also features secure authentication with **Firebase**.
 
-**Live Demo**: [Saregama - Live](https://saregama-omega.vercel.app/)
-
 ---
 
 ## Features
@@ -35,3 +33,7 @@ Saregama is a modern web application designed to provide users with an immersive
   - **Redux Toolkit** - A modern approach to managing state in React applications.
 
 ---
+
+## Live Demo
+
+You can try out the app here: [Saregama - Live Demo](https://saregama-omega.vercel.app/)
