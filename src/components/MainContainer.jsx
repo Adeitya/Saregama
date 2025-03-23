@@ -6,9 +6,11 @@ import HomeContainer from "./HomeContainer";
 
 const MainContainer = () => {
   const searchData = useSelector((store) => store.search.searchData);
+  const homePageFlag = useSelector((store) => store.config.homePageFlag);
 
-  if (searchData.length == 0) return <HomeContainer />;
-  return (
+  return homePageFlag ? (
+    <HomeContainer />
+  ) : (
     <div className="bg-gradient-to-t pt-20 from-black h-screen overflow-y-scroll">
       <div className="bg-white mx-40 my-2 rounded-lg p-4">
         <div>

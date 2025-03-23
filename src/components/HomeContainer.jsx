@@ -3,8 +3,11 @@ import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router";
 import ShimmerCard from "./ShimmerCard";
+import { useDispatch } from "react-redux";
+import { setHomePageFlag } from "../store/slices/configSlice";
 
 const HomeContainer = () => {
+  const dispatch = useDispatch();
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
@@ -30,6 +33,7 @@ const HomeContainer = () => {
             <Link
               key={video.id.videoId}
               to={"/browse/watch?v=" + video.id.videoId}
+              onClick={() => dispatch(setHomePageFlag(false))}
             >
               <VideoCard info={video} />
             </Link>

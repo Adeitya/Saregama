@@ -6,10 +6,12 @@ import {
 } from "firebase/auth";
 import { auth, signInWithGoogle } from "../utils/firebase";
 import { useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUserDetails } from "../store/slices/userSlice";
 import { LOGO_URL } from "../utils/constants";
 import { onAuthStateChanged } from "firebase/auth";
+import { setShowLoaderFlag } from "../store/slices/configSlice";
+import Loader from "./Loader";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -35,10 +37,13 @@ const Login = () => {
     });
   };
 
+  const showLoaderFlag = useSelector((store) => store.config.showLoaderFlag);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log("login ", user);
+        dispatch(setShowLoaderFlag(false));
         navigate("/browse");
       }
     });
@@ -67,6 +72,7 @@ const Login = () => {
       email.current.value &&
       password.current.value
     ) {
+      dispatch(setShowLoaderFlag(true));
       if (isSignInForm) {
         try {
           const userCredential = await signInWithEmailAndPassword(
@@ -83,6 +89,7 @@ const Login = () => {
             })
           );
         } catch {
+          dispatch(setShowLoaderFlag(false));
           setInputErrorState({
             ...inputErrorState,
             apiErrorMsg: "User Not Found (Invalid Credential).",
@@ -104,6 +111,7 @@ const Login = () => {
             })
           );
         } catch {
+          dispatch(setShowLoaderFlag(false));
           setInputErrorState({
             ...inputErrorState,
             apiErrorMsg: "Email already in use.",
@@ -249,10 +257,14 @@ const Login = () => {
                   ❗️{inputErrorState.password}
                 </p>
               )}
-              {inputErrorState.apiErrorMsg && (
-                <p className="text-red-600 -mt-2 mb-4 text-xs">
-                  ❗️{inputErrorState.apiErrorMsg}
-                </p>
+              {showLoaderFlag ? (
+                <Loader />
+              ) : (
+                inputErrorState.apiErrorMsg && (
+                  <p className="text-red-600 -mt-2 mb-4 text-xs">
+                    ❗️{inputErrorState.apiErrorMsg}
+                  </p>
+                )
               )}
               <button
                 className="bg-green-500 py-3 w-full rounded-full text-black font-bold cursor-pointer hover:bg-green-400 hover:text-lg"

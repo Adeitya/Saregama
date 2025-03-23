@@ -12,6 +12,8 @@ import { auth } from "../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { addSuggestionCache, addSearchTxt } from "../store/slices/searchSlice";
 import { useNavigate } from "react-router";
+import { setHomePageFlag } from "../store/slices/configSlice";
+import SuggestionShimmer from "./SuggestionShimmer";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,6 +23,7 @@ const Header = () => {
   const [searchResult, setSearchResult] = useState([]);
 
   const suggestionCache = useSelector((store) => store.search.suggestionCache);
+  const homePageFlag = useSelector((store) => store.config.homePageFlag);
 
   useEffect(() => {
     const i = setTimeout(() => {
@@ -58,12 +61,19 @@ const Header = () => {
     <div className="flex fixed justify-between bg-black w-full py-3 px-4 z-50">
       <img src={LOGO_URL} alt="logo" className="h-10" />
       <div className="flex w-1/3 gap-2">
-        <div className="rounded-full bg-gray-200 p-1 hover:bg-green-500 cursor-pointer">
+        <div
+          className={`rounded-full bg-gray-200 p-1  ${
+            !homePageFlag ? "hover:bg-green-500 cursor-pointer" : null
+          }`}
+        >
           <img
             src={HOME_WHITE}
             alt="logo"
             className="h-8 p-1"
-            onClick={() => navigate("/browse")}
+            onClick={() => {
+              navigate("/browse");
+              dispatch(setHomePageFlag(true));
+            }}
           />
         </div>
         <div className="flex grow bg-white rounded-full p-1 relative">
@@ -77,22 +87,28 @@ const Header = () => {
               onFocus={() => setShowSuggestion(true)}
               onBlur={() => setTimeout(() => setShowSuggestion(false), 200)}
             />
-            {showSuggestion && searchTxt && (
-              <div className="absolute bg-white w-[90%] mt-10 z-50 max-h-60 rounded-lg shadow-lg overflow-y-auto">
-                {searchResult?.map((item, index) => (
-                  <span
-                    key={index}
-                    className="block p-2 text-black hover:bg-green-500 cursor-pointer"
-                    onClick={() => {
-                      dispatch(addSearchTxt(item.term));
-                      setSearchTxt(item.term);
-                    }}
-                  >
-                    {item.term}
-                  </span>
-                ))}
-              </div>
-            )}
+            {showSuggestion ? (
+              searchResult?.length > 0 ? (
+                <div className="absolute bg-white w-[90%] mt-10 z-50 max-h-60 rounded-lg shadow-lg overflow-y-auto">
+                  {searchResult?.map((item, index) => (
+                    <span
+                      key={index}
+                      className="block p-2 text-black hover:bg-green-500 cursor-pointer"
+                      onClick={() => {
+                        dispatch(addSearchTxt(item.term));
+                        setSearchTxt(item.term);
+                        dispatch(setHomePageFlag(false));
+                        navigate("/browse");
+                      }}
+                    >
+                      {item.term}
+                    </span>
+                  ))}
+                </div>
+              ) : (
+                searchTxt && <SuggestionShimmer />
+              )
+            ) : null}
           </div>
           <img
             src={"https://cdn-icons-png.flaticon.com/128/149/149852.png"}
@@ -102,6 +118,8 @@ const Header = () => {
               if (searchTxt) {
                 dispatch(addSearchTxt(searchTxt));
                 setSearchTxt(searchTxt);
+                dispatch(setHomePageFlag(false));
+                navigate("/browse");
               }
             }}
           />
