@@ -1,5 +1,5 @@
 export const LOGO_URL =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ057HBKYGvHGqFSigWBSn_PZFXRsICls11lqrMyp5pxDhgaQ2k35bS7eZzlZ6rUHp7Y_Y&usqp=CAU";
+  "https://cdn-icons-png.flaticon.com/128/1834/1834342.png";
 
 export const PROFILE_URL =
   "https://cdn-icons-png.flaticon.com/128/4400/4400483.png";
