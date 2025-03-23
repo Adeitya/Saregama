@@ -5,6 +5,7 @@ import Login from "./Login";
 import WatchPage from "./WatchPage";
 import MainContainer from "./MainContainer";
 import HomeContainer from "./HomeContainer";
+import GptMusicSuggestion from "./GptMusicSuggestion";
 
 const Body = () => {
   const appRouter = createBrowserRouter([
@@ -27,6 +28,10 @@ const Body = () => {
         {
           path: "watch",
           element: <WatchPage />,
+        },
+        {
+          path: "aiSearch",
+          element: <GptMusicSuggestion />,
         },
       ],
     },

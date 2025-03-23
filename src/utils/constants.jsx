@@ -31,3 +31,16 @@ export const YOUTUBE_VIDEO_ID =
   "&id=";
 
 export const DEBOUNCING_DELAY = 300;
+
+export const GEMINIAPI_KEY = "AIzaSyDeQKnPvgDB_RRgbd2GAf_petHeRWecRZ4";
+
+export const TRACK_URL =
+  "https://spotify23.p.rapidapi.com/search/?type=tracks&offset=0&limit=10&numberOfTopResults=5&q=";
+
+export const SPOTIFY_API_OPTIONS = {
+  method: "GET",
+  headers: {
+    "x-rapidapi-key": "1d462b4dacmshb05123e444ceb5cp1fed7ejsn20d1b7bc3ae6",
+    "x-rapidapi-host": "spotify23.p.rapidapi.com",
+  },
+};
