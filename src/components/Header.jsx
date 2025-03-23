@@ -131,7 +131,7 @@ const Header = () => {
           </div>
         )}
       </div>
-      <div className="flex gap-6">
+      <div className="flex gap-3">
         <img
           src="https://cdn-icons-png.flaticon.com/128/10172/10172332.png"
           alt="logo"
