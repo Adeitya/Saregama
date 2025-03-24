@@ -11,7 +11,7 @@ const TrackInfoList = ({ title, trackList }) => {
       <h1 className="font-bold text-lg text-black">{title}</h1>
       <div className="flex overflow-x-scroll">
         <div className="flex gap-2 rounded-lg ">
-          {trackList?.length > 0 || trackList === undefined || null ? (
+          {trackList?.length === 0 || trackList === undefined || null ? (
             <ShimmerCard />
           ) : (
             trackList?.map((item) => (
