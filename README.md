@@ -37,3 +37,10 @@ Saregama is a modern web application designed to provide users with an immersive
 ## Live Demo
 
 You can try out the app here: [Saregama - Live Demo](https://saregama-omega.vercel.app/)
+
+## Demo Video
+
+https://github.com/user-attachments/assets/cf82e970-85ce-465a-ae38-fc266c0b4a55
+
+
+
