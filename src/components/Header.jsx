@@ -59,10 +59,10 @@ const Header = () => {
 
   return (
     <div className="flex fixed justify-between bg-black w-full py-3 px-4 z-50">
-      <img src={LOGO_URL} alt="logo" className="h-10" />
+      <img src={LOGO_URL} alt="logo" className="md:h-10 h-8 md:mr-0 mr-2" />
       <div
         className={`flex gap-2 ${
-          gptScreenFlag ? "w-full justify-end mr-4" : "w-1/3"
+          gptScreenFlag ? "w-full justify-end mr-4" : "md:w-1/3 w-full"
         }`}
       >
         <div
@@ -73,7 +73,7 @@ const Header = () => {
           <img
             src={HOME_WHITE}
             alt="logo"
-            className="h-8 p-1"
+            className="md:h-8 h-6 p-1"
             onClick={() => {
               navigate("/browse");
               // dispatch(setHomePageFlag(true));
@@ -86,7 +86,7 @@ const Header = () => {
               <input
                 type="text"
                 placeholder="What do you want to play?"
-                className="w-full focus:outline-none pl-2 p-1"
+                className="w-full focus:outline-none pl-2 p-1 text-sm md:text-lg"
                 value={searchTxt}
                 onChange={(e) => setSearchTxt(e.target.value)}
                 onFocus={() => setShowSuggestion(true)}
@@ -131,17 +131,17 @@ const Header = () => {
           </div>
         )}
       </div>
-      <div className="flex gap-3">
+      <div className="flex md:gap-3 gap-0">
         <img
           src="https://cdn-icons-png.flaticon.com/128/10172/10172332.png"
           alt="logo"
-          className="h-10 cursor-pointer hover:bg-white hover:rounded-full"
+          className="md:h-10 h-8 md:mr-0 mr-2 cursor-pointer hover:bg-white hover:rounded-full"
           onClick={() => navigate("/browse/aiSearch")}
         />
         <img
           src={PROFILE_URL}
           alt="logo"
-          className="h-10 cursor-pointer hover:bg-white hover:rounded-full"
+          className="md:h-10 h-8 cursor-pointer hover:bg-white hover:rounded-full"
           onClick={() => signOut(auth)}
         />
       </div>

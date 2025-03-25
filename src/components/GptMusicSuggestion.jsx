@@ -53,23 +53,23 @@ const GptMusicSuggestion = () => {
 
   return (
     <div className="bg-gradient-to-t pt-20 from-black h-screen overflow-y-scroll">
-      <div className="bg-gradient-to-t from-black mx-40 my-2 px-40 rounded-lg p-4">
+      <div className="bg-gradient-to-t from-black md:mx-40 mx-2 my-2 md:px-40 rounded-lg p-4">
         <div className="flex justify-between  bg-white p-1 rounded-sm">
           <input
             ref={searchTxt}
             type="text"
             placeholder="What do you want to listen to? Let AI suggest...?"
-            className=" w-full focus:outline-none pl-2 p-1"
+            className=" w-full focus:outline-none pl-2 p-1 text-sm"
           />
           <button
-            className="text-black bg-green-500 hover:bg-green-400 py-2 px-8 rounded-md cursor-pointer"
+            className="text-black bg-green-500 hover:bg-green-400 py-2 md:px-8 px-2 rounded-md cursor-pointer"
             onClick={handleSearch}
           >
             Search
           </button>
         </div>
       </div>
-      <div className="bg-white mx-40 my-2 rounded-lg p-4">
+      <div className="bg-white md:mx-40 mx-2 my-2 rounded-lg p-4">
         {gptTrackNames && <p className="font-bold text-xl mb-2">Songs</p>}
         <div className="">
           {gptShowLoading ? (

@@ -9,7 +9,7 @@ const SongCard = ({ data }) => {
       <img alt="logo" src={thumbnails?.default?.url} />
       <div className="flex flex-col justify-center">
         <p>{title}</p>
-        <p>{description}</p>
+        <p className="hidden md:block">{description}</p>
       </div>
     </div>
   );

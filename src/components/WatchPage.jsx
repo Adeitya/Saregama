@@ -19,11 +19,9 @@ const WatchPage = () => {
   };
   return (
     <div className="bg-gradient-to-t pt-20 from-black h-screen overflow-y-scroll">
-      <div className="flex flex-col items-center bg-white mx-40 my-2 rounded-lg p-4">
+      <div className="flex flex-col items-center bg-white md:mx-40 mx-2 my-2 rounded-lg p-4">
         <div className="flex">
           <iframe
-            width="939"
-            height="528"
             src={
               "https://www.youtube.com/embed/" +
               searchParams.get("v") +
@@ -33,7 +31,7 @@ const WatchPage = () => {
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-            className="rounded-lg"
+            className="rounded-lg md:w-[939px] md:h-[528px] w-[250px] h-[150px]"
           ></iframe>
         </div>
         {videoDetail && (
@@ -52,11 +50,11 @@ const WatchPage = () => {
                   {videoDetail?.snippet?.channelTitle}
                 </p>
               </div>
-              <button className="flex bg-gray-200 p-2 rounded-full font-medium">
+              <button className="flex bg-gray-200 p-2 rounded-full font-medium text-sm">
                 <img
                   alt="like"
                   src="https://cdn-icons-png.flaticon.com/128/2107/2107783.png"
-                  className="h-5 mr-1"
+                  className="md:h-5 h-4 mr-1"
                 />
                 {videoDetail?.statistics?.likeCount}
               </button>

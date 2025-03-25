@@ -6,7 +6,7 @@ const GptSongCard = ({ data }) => {
   const { title, thumbnails, channelTitle } = snippet;
 
   return (
-    <div className="w-80 h-72 shadow-lg p-2 m-2 cursor-pointer group hover:bg-green-500 hover:scale-105 transform transition-all duration-300 ease-in-out">
+    <div className="md:w-80 md:h-72 w-50 h-50 shadow-lg p-2 m-2 cursor-pointer group hover:bg-green-500 hover:scale-105 transform transition-all duration-300 ease-in-out">
       <img
         alt="thumbnail"
         src={thumbnails.medium.url}

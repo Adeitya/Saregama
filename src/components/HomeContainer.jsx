@@ -29,7 +29,7 @@ const HomeContainer = () => {
   return (
     // <div className="flex flex-row justify-center flex-wrap overflow-y-auto h-screen pt-20">
     <div className="bg-gradient-to-t pt-20 from-black h-screen overflow-y-scroll">
-      <div className="bg-white mx-40 my-2 rounded-lg p-4 flex flex-row justify-center flex-wrap">
+      <div className="bg-white md:mx-40 mx-2 my-2 rounded-lg p-4 flex flex-row justify-center flex-wrap">
         {videos?.length === 0 ? (
           <ShimmerCard />
         ) : (
