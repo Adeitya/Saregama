@@ -62,6 +62,12 @@ const Login = () => {
     }
   };
 
+  const handleTestAccountClick = () => {
+    if (name.current) name.current.value = "Test User";
+    if (email.current) email.current.value = "test4@gmail.com";
+    if (password.current) password.current.value = "Password12@";
+  };
+
   const handleButtonClick = async () => {
     if (
       !inputErrorState.email &&
@@ -136,7 +142,7 @@ const Login = () => {
             {isSignInForm ? "Log In" : "Sign up"} to Saregama
           </p>
           <div
-            className="flex flex-row gap-6 border border-solid border-gray-400 rounded-full py-2 px-8 my-8 cursor-pointer hover:border-white"
+            className="flex flex-row gap-6 border border-solid border-gray-400 rounded-full py-2 px-8 mt-8 mb-4 cursor-pointer hover:border-white"
             onClick={handleContinueGoogle}
           >
             <img
@@ -146,6 +152,19 @@ const Login = () => {
             />
             <p className="text-white md:text-lg text-sm font-bold">
               {isSignInForm ? "Continue" : "Sign up"} with Google
+            </p>
+          </div>
+          <div
+            className="flex flex-row gap-6 border border-solid border-gray-400 rounded-full py-2 px-8 mb-8 cursor-pointer hover:border-white"
+            onClick={handleTestAccountClick}
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/18962/18962978.png"
+              alt="g-icon bg-black"
+              className="md:h-8 h-6"
+            />
+            <p className="text-white md:text-lg text-sm font-bold">
+              Continue with Test Account
             </p>
           </div>
           <div className="border border-solid border-gray-600 w-full" />
